@@ -1,101 +1,75 @@
-import Image from "next/image";
+import Link from 'next/link';
+import Banner from './components/Banner'; // Import the Banner component
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Display the banner at the top */}
+      <Banner />
+{/* Image section below the banner */}
+<div className="container mx-auto py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/main shirt.jpg"
+            alt="T-Shirts Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/main jeans.jpg"
+            alt="Jeans Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+        </div>
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/main short.jpg"
+            alt="Shorts Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+        </div>
+      </div>
+      <div className="container mx-auto py-12 text-center">
+        <h1 className="text-4xl font-bold mb-6">Welcome to Our Garments Store</h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Discover premium-quality t-shirts, jeans, and shorts for kids, men, and women. Explore a wide variety of styles, colors, and sizes to suit every occasion. Whether you're looking for a casual outfit, something for the weekend, or a comfortable daily wear, our collection is designed to provide the perfect fit and exceptional comfort. With a focus on premium materials and trendy designs, you'll find the best of fashion at unbeatable prices. Shop now and enjoy a seamless shopping experience with easy returns and exchanges! Browse our exclusive collection of high-quality t-shirts, jeans, and shorts, carefully crafted to meet the needs of every individual. From vibrant colors to classic neutrals, our garments are designed to match your unique style. Whether you're dressing up for a special event or going for a laid-back look, our versatile pieces will elevate your wardrobe.
+
+          With a commitment to sustainability and durability, our clothes are made to last, ensuring you get the most value for your purchase. Plus, enjoy hassle-free shopping with secure payment options, fast delivery, and outstanding customer service. Don’t miss out on our seasonal sales, and stay tuned for new arrivals to keep your wardrobe fresh all year round!
+        </p>
+        <Link href="/products">
+          <button className="bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-600 transition">
+            Shop Now
+          </button>
+        </Link>
+      </div>
+
+      {/* Image section below the banner
+      <div className="container mx-auto py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/t-shirts.jpg"
+            alt="T-Shirts Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/jeans.jpg"
+            alt="Jeans Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <img
+            src="/images/shorts.jpg"
+            alt="Shorts Collection"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div> */}
+    </>
   );
 }
+
+
