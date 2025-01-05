@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'; // Use Next.js Image
 import { useCart } from '@/context/CartContext'; // Import the CartContext
 
 // Dummy data (replace with API or database calls)
@@ -20,13 +21,9 @@ const products = [
 export default function ProductDetailsPage({ params }: { params: { id: string } }) {
   const { id } = params;
   const router = useRouter();
+  const { cart, addToCart } = useCart();
 
   const product = products.find((p) => p.id === id);
-  if (!product) {
-    return <div className="container mx-auto py-12 text-center">Product not found.</div>;
-  }
-
-  const { cart, addToCart } = useCart(); // Using cart and addToCart from context
   const [showAddToCartAlert, setShowAddToCartAlert] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,29 +35,29 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
   });
   const [showThankYouPopup, setShowThankYouPopup] = useState(false);
 
-  // Add to cart function
+  if (!product) {
+    return <div className="container mx-auto py-12 text-center">Product not found.</div>;
+  }
+
   const handleAddToCart = () => {
     addToCart({ id: product.id, name: product.name, image: product.image, price: product.price, quantity: 1 });
     setShowAddToCartAlert(true);
     setTimeout(() => setShowAddToCartAlert(false), 3000);
   };
 
-  // Buy Now function
   const handleBuyNow = () => {
-    setShowForm(true); // Show the customer details form when Buy Now is clicked
+    setShowForm(true);
   };
 
-  // Handle form submission
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowForm(false); // Hide the form
-    setShowThankYouPopup(true); // Show the thank you pop-up
-    setTimeout(() => setShowThankYouPopup(false), 5000); // Hide the thank you pop-up after 5 seconds
+    setShowForm(false);
+    setShowThankYouPopup(true);
+    setTimeout(() => setShowThankYouPopup(false), 5000);
   };
 
-  // View Cart button handler
   const handleViewCart = () => {
-    router.push('/cart'); // Ensure you have a `/cart` page implemented
+    router.push('/cart');
   };
 
   return (
@@ -76,36 +73,29 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
 
       <h1 className="text-3xl font-bold mb-6">{product.name}</h1>
       <div className="mb-4">
-        <img src={product.image} alt={product.name} className="w-48 h-48" />
+        <Image src={product.image} alt={product.name} width={192} height={192} className="rounded" />
       </div>
       <p className="text-gray-600 mb-4">{product.description}</p>
       <p className="text-gray-800 font-semibold mb-6">${product.price}</p>
 
       <div className="flex space-x-4">
-        {/* Add to Cart Button */}
         <button onClick={handleAddToCart} className="px-6 py-2 bg-green-500 text-white rounded">
           Add to Cart
         </button>
-
-        {/* Buy Now Button */}
         <button onClick={handleBuyNow} className="px-6 py-2 bg-blue-500 text-white rounded">
           Buy Now
         </button>
-
-        {/* View Cart Button */}
         <button onClick={handleViewCart} className="px-6 py-2 bg-gray-700 text-white rounded">
           View Cart
         </button>
       </div>
 
-      {/* Add to Cart Alert */}
       {showAddToCartAlert && (
         <div className="fixed top-0 left-0 right-0 bg-green-500 text-white text-center py-3 shadow-md">
           <p className="text-lg font-semibold">Item added to cart!</p>
         </div>
       )}
 
-      {/* Customer Details Form (Appears when Buy Now is clicked) */}
       {showForm && (
         <div className="mt-6 bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-semibold mb-4">Enter Your Details</h2>
@@ -156,7 +146,6 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
         </div>
       )}
 
-      {/* Thank You Pop-up */}
       {showThankYouPopup && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg text-center">
@@ -168,4 +157,6 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
     </div>
   );
 }
+
+
 

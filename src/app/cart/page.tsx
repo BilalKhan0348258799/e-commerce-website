@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext'; // Import the CartContext
 
 export default function CartPage() {
