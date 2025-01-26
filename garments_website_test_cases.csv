@@ -1,0 +1,7 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Verify that the homepage loads correctly.,Open the website URL in the browser.,Homepage loads within 2 seconds with all elements visible.,Homepage loaded successfully.,Passed,Low,Frontend Developer,Performance is optimal.
+TC002,Check product filters for category and color.,Apply category 'T-Shirts' and color 'Black' filters.,Only black T-Shirts are displayed.,Filters worked as expected.,Passed,Medium,Frontend Developer,No issues found.
+TC003,Validate cart functionality.,Add a T-Shirt to the cart and view the cart page.,Product is displayed in the cart with correct details.,Product added successfully.,Passed,Medium,Frontend Developer,Cart functionality works as intended.
+TC004,Test responsiveness on mobile devices.,Open the website on a mobile browser.,Website adapts to the screen size without layout issues.,Responsive design is functional.,Passed,High,Frontend Developer,Responsive design validated.
+TC005,Simulate failed API call for product data.,Trigger a network failure while loading products.,Display a fallback message: 'Unable to load products.',Fallback message displayed as expected.,Passed,High,Backend Developer,Error handling is robust.
+TC006,Validate input fields for XSS attacks.,Enter a script tag in the search bar and submit.,"Input is sanitized, and no malicious script is executed.",Input sanitized successfully.,Passed,Critical,Backend Developer,Security measures implemented.
